@@ -4,8 +4,9 @@ import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TfiEmail, TfiLock,  } from 'react-icons/tfi';
+import { authContext } from '../../context/AuthContext';
 // Main App component
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +14,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   
   const [showPassword, setShowPassword] = useState(false);
+
+  const {setUser}=useContext(authContext);
 const router=useRouter();  
 const userInfo={email,password}
   const handleSubmit = (e) => {
@@ -21,6 +24,7 @@ const userInfo={email,password}
     axios.post('https://backend.gameplanai.co.uk/authentication_app/login/', userInfo)
     .then(res=>{
         if (res.data.user_profile) {
+          setUser()
 
             localStorage.setItem('token',res.data.access)
             router.push('/chat')
@@ -77,7 +81,7 @@ const userInfo={email,password}
                 <input
                   type="email"
                   id="email"
-                  className="w-full p-3  focus:outline-none  placeholder-white"
+                  className="w-full p-3  focus:outline-none  "
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -98,7 +102,7 @@ const userInfo={email,password}
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password"
-                  className="w-full p-3  focus:outline-none placeholder-white"
+                  className="w-full p-3  focus:outline-none"
                   placeholder="Enter your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
