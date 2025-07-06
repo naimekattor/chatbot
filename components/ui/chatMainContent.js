@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import { RiLinkM } from 'react-icons/ri'
 
 const ChatMainContent = () => {
   return (
@@ -23,7 +22,7 @@ const ChatMainContent = () => {
                 </div>
                 <h2 className="text-4xl font-bold mb-4">Ask me anything. I&apos;ll do my best to help.</h2>
                 <p className="text-gray-400 mb-8">
-                  Get expert guidance powered by AI agents specializing in Sales, Marketing, and Negotiation. While I provide data-driven insights and strategic recommendations, remember that I'm just a robot! Always verify information and make informed decisions before implementing any advice.
+                  Get expert guidance powered by AI agents specializing in Sales, Marketing, and Negotiation. While I provide data-driven insights and strategic recommendations, remember that I&apos;m just a robot! Always verify information and make informed decisions before implementing any advice.
                 </p>
 
                 {/* Upload Image Section */}

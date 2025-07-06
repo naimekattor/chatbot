@@ -34,7 +34,7 @@ const ChatPage = () => {
             setIsLoading(false);
         }
         fetchData();
-    }, [chatId,token])
+    }, [chatId, messageHistory, token])
 
 
     const handleSendMessage = async () => {

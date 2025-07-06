@@ -1,9 +1,9 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { LuMessageSquare } from 'react-icons/lu'
-import { authContext } from '../../context/AuthContext'
+//import { authContext } from '../../context/AuthContext'
 import { IoIosLogOut } from 'react-icons/io'
 
 const ChatSideBar = () => {
@@ -11,7 +11,7 @@ const ChatSideBar = () => {
     const [messageHistory, setMessageHistory] = useState([]);
     const [userProfile, setUserProfile] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const {user}=useContext(authContext);
+    //const {user}=useContext(authContext);
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 
     useEffect(()=>{
@@ -82,7 +82,9 @@ const ChatSideBar = () => {
               </div>
       
               {/* Recent Chats */}
-              <div className="mb-6 flex-grow overflow-y-auto custom-scrollbar">
+              {
+                isLoading ? <>Loading....</>:
+                <div className="mb-6 flex-grow overflow-y-auto custom-scrollbar">
                 <h3 className="text-gray-400 text-sm font-semibold uppercase mb-3">Recent Chats</h3>
                 <div className="space-y-3">
                   {messageHistory.map((chat, index) => (
@@ -104,6 +106,9 @@ const ChatSideBar = () => {
                   ))}
                 </div>
               </div>
+
+              }
+              
       
               {/* Update Your Plan Card */}
               <div className="bg-blue-600 p-4 rounded-lg text-center mb-6">

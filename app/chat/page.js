@@ -14,7 +14,8 @@ const Chat = () => {
   const[messageHistory,setMessageHistory]=useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentChatId,setCurrentChatId]=useState(null);
-  const token=localStorage.getItem('token');
+  const [token,setToken]=useState(null)
+  
   const router=useRouter();
   const params=useParams();
   const chatId=params?.chatId;
@@ -29,6 +30,7 @@ useEffect(()=>{
     if(saved){
         setMessageHistory(JSON.parse(saved))
     }
+    setToken(localStorage.getItem('token'))
 },[])
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -78,10 +80,6 @@ useEffect(()=>{
   };
   
   
-  const handleImageUpload = () => {
-    console.log('Image upload initiated');
-    // In a real app, open file picker or camera
-  };
 
   return (
   
@@ -95,7 +93,10 @@ useEffect(()=>{
                 className={`w-full flex ${msg.sent_by === 'User' ? 'justify-end' : 'justify-start'}`}
               >
                 <div className="bg-gray-800 inline-block gap-2 p-4 rounded-lg max-w-[70%]">
-                  <p className="text-gray-200 whitespace-pre-wrap">{msg.text_content}</p>
+                  {
+                    isLoading? <p>Loading</p>:<p className="text-gray-200 whitespace-pre-wrap">{msg.text_content}</p>
+                  }
+                  
                 </div>
               </div>
             ))}
