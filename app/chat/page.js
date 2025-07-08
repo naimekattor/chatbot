@@ -107,7 +107,7 @@ useEffect(()=>{
           <ChatMainContent error={error}/>
         )}
       </div>
-      <div className='fixed inset-x-0 z-50 bottom-0 bg-[#111826]'>
+      <div className='sticky inset-x-0 z-50 bottom-0 bg-[#111826]'>
           <SendMessage handleSendMessage={handleSendMessage} setMessageInput={setMessageInput} messageInput={messageInput}/>
 
       </div>

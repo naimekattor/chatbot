@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { TfiEmail, TfiLock, TfiUser } from 'react-icons/tfi';
+import Swal from 'sweetalert2';
 // Main App component
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -21,13 +22,28 @@ const userInfo={email, username, password, confirmPassword}
     axios.post('https://backend.gameplanai.co.uk/authentication_app/signup/', userInfo)
     .then(res=>{
         console.log(res.data);
+        if (res.data) {
+          Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Sign Up Successfull",
+  showConfirmButton: false,
+  timer: 1500
+});
+window.location.href='/login'
+        }
         
     }).catch(err=>{
         console.log('error',err);
+        Swal.fire({
+  icon: "error",
+  title: err.response.data.Error,
+  
+  
+});
         
     })
     console.log(userInfo);
-    alert('Form submitted! (Check console for data)'); // Using alert for demo, replace with proper UI feedback
   };
 
   return (

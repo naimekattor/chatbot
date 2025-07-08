@@ -129,7 +129,7 @@ const ChatPage = () => {
          {
             messageHistory.length>0 ?
             /* Chat Messages */
-        <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
+        <div className="flex-1 p-6 overflow-y-auto custom-scrollbar pb-28">
           <div className="space-y-4">
             {messageHistory.map((msg, index) => (
                 <div
@@ -167,7 +167,7 @@ const ChatPage = () => {
         }
        </div>
 
-       <div className='fixed inset-x-0 z-50 bottom-0 bg-[#111826]'>
+       <div className='sticky inset-x-0 z-50 bottom-0 bg-[#111826]'>
         <SendMessage handleSendMessage={handleSendMessage} setMessageInput={setMessageInput} messageInput={messageInput}/>
        </div>
     </div>

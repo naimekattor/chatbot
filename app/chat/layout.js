@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { LuMessageSquarePlus } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import { GoSidebarCollapse } from "react-icons/go";
 
 
 export default function ChatLayout({ children }) {
@@ -19,7 +20,8 @@ export default function ChatLayout({ children }) {
       </div>
       <div className="bg-black w-full py-8 h-6 md:hidden flex justify-between px-4 items-center">
 
-        <span onClick={()=>setShowSidebar(prev=>!prev)}><FaBarsStaggered />
+        <span onClick={()=>setShowSidebar(prev=>!prev)}><GoSidebarCollapse />
+
 </span>
         <h1>
           <Image src={'/img/logo.png'} width={60} height={60} alt="logo" className="w-[100px] h-[60px]"/>
@@ -36,7 +38,7 @@ export default function ChatLayout({ children }) {
         
       }
       </div>
-      <div className='w-full p-4 flex flex-col md:h-screen h-[calc(100vh-400px)] justify-between'>
+      <div className='w-full p-4 flex flex-col md:h-screen h-[calc(100vh-60px)] justify-between'>
         {children}
        
         

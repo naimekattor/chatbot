@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import React, { useContext, useState } from 'react';
 import { TfiEmail, TfiLock,  } from 'react-icons/tfi';
 import { authContext } from '../../context/AuthContext';
+import Swal from 'sweetalert2';
 // Main App component
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,18 +28,30 @@ const userInfo={email,password}
           setUser()
 
             localStorage.setItem('token',res.data.access)
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Login Successfull",
+              showConfirmButton: false,
+              timer: 1500
+            });
             router.push('/chat')
             
         }
         console.log(res.data);
         
     }).catch(err=>{
-        console.log('error',err);
+      Swal.fire({
+        icon: "error",
+        title: err.response.data.Error,
+        
+        
+      });
+        //console.log('error',err);
         
     })
     console.log(userInfo);
     console.log({ email, password });
-    alert('Form submitted! (Check console for data)'); // Using alert for demo, replace with proper UI feedback
   };
 
   return (

@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { MdDelete, MdOutlineDriveFileRenameOutline } from 'react-icons/md'
 import axios from 'axios'
 import { RxCross2 } from 'react-icons/rx'
+import { GoSidebarExpand } from 'react-icons/go'
 
 const ChatSideBar = ({setShowSidebar}) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -131,7 +132,8 @@ setMessageHistory(prev=>prev.map(chat=>chat.id===chatId?{...chat,chat_name:editi
             alt="AdFusion Labs Logo"
             className="h-[63px] w-[196px] rounded-full"
           />
-          <span onClick={()=>setShowSidebar(prev=>!prev)}><RxCross2 />
+          <span onClick={()=>setShowSidebar(prev=>!prev)} className='md:hidden block'><GoSidebarExpand />
+
 </span>
         </div>
 
