@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const ChatMainContent = () => {
+const ChatMainContent = ({error}) => {
   return (
     <div>
       <div className="flex-1 flex flex-col bg-gray-900">
@@ -32,6 +32,9 @@ const ChatMainContent = () => {
                 >
                   <p className="text-blue-500 font-semibold mb-2">Upload Image</p>
                   <p className="text-gray-400 text-sm">Detailed explanation of your Image.</p>
+                </div>
+                <div className='py-4'>
+                  <p className='text-red-500'>{error}</p>
                 </div>
               </div>
             </div>

@@ -34,10 +34,17 @@ const ChatPage = () => {
             setIsLoading(false);
         }
         fetchData();
-    }, [chatId, messageHistory, token])
+    }, [chatId, token])
 
 
-    const handleSendMessage = async () => {
+    useEffect(()=>{
+      console.log('printed');
+      
+    },[])
+
+
+    const handleSendMessage = async (e) => {
+       e.preventDefault();
         console.log('handleSendMessage called');
         console.log('messageInput:', messageInput);
         console.log('chatId:', chatId);
@@ -103,7 +110,7 @@ const ChatPage = () => {
             
             // Optionally add an error message to the chat
             setMessageHistory(prev => [...prev, {
-                text_content: 'Sorry, there was an error sending your message. Please try again.',
+                text_content: err.response?.data.Message,
                 sent_by: 'Bot'
             }]);
         }
@@ -114,7 +121,7 @@ const ChatPage = () => {
 
   return (
     <div className='flex flex-col h-screen w-full bg-gray-800 text-white justify-between'>
-      chat for chatId: {chatId}
+      {/* chat for chatId: {chatId} */}
       {/* Main Chat Area */}
       
        <div className="flex-1 flex flex-col bg-gray-900 overflow-y-auto">
@@ -138,15 +145,15 @@ const ChatPage = () => {
             isLoading && (
               <div className="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4">
                 <div className="flex animate-pulse space-x-4">
-                  <div className="size-10 rounded-full bg-amber-300"></div>
+                  <div className="size-10 rounded-full bg-gray-800"></div>
                   <div className="flex-1 space-y-6 py-1">
-                    <div className="h-2 rounded bg-amber-300"></div>
+                    <div className="h-2 rounded bg-gray-800"></div>
                     <div className="space-y-3">
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="col-span-2 h-2 rounded bg-amber-300"></div>
-                        <div className="col-span-1 h-2 rounded bg-amber-300"></div>
+                        <div className="col-span-2 h-2 rounded bg-gray-800"></div>
+                        <div className="col-span-1 h-2 rounded bg-gray-800"></div>
                       </div>
-                      <div className="h-2 rounded bg-amber-300"></div>
+                      <div className="h-2 rounded bg-gray-800"></div>
                     </div>
                   </div>
                 </div>

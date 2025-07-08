@@ -14,7 +14,8 @@ const Chat = () => {
   const[messageHistory,setMessageHistory]=useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentChatId,setCurrentChatId]=useState(null);
-  const [token,setToken]=useState(null)
+  const [token,setToken]=useState(null);
+  const [error,setError]=useState(null);
   
   const router=useRouter();
   const params=useParams();
@@ -67,6 +68,7 @@ useEffect(()=>{
             
         }).catch(err => {
   if (err.response && err.response.data) {
+    setError(err.response.data.Message);
     console.log('error', err.response.data.Message);
   } else {
     console.log('error', err.message);
@@ -102,7 +104,7 @@ useEffect(()=>{
             ))}
           </div>
         ) : (
-          <ChatMainContent/>
+          <ChatMainContent error={error}/>
         )}
       </div>
       <div>
