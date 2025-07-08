@@ -9,7 +9,6 @@ import { BiSolidMessageAdd } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
 import { MdDelete, MdOutlineDriveFileRenameOutline } from 'react-icons/md'
 import axios from 'axios'
-import { RxCross2 } from 'react-icons/rx'
 import { GoSidebarExpand } from 'react-icons/go'
 
 const ChatSideBar = ({setShowSidebar}) => {

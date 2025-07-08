@@ -1,5 +1,4 @@
 'use client'
-import { FaBarsStaggered } from "react-icons/fa6";
 import ChatSideBar from "../../components/ui/chatSideBar";
 import { useState } from "react";
 import Image from "next/image";
