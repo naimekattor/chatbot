@@ -36,7 +36,7 @@ export default function ChatLayout({ children }) {
         
       }
       </div>
-      <div className='w-full p-4 flex flex-col h-screen justify-between'>
+      <div className='w-full p-4 flex flex-col md:h-screen h-[calc(100vh-400px)] justify-between'>
         {children}
        
         
